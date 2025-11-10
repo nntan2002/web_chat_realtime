@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "vercel-build": "prisma generate && prisma migrate deploy && next build",
     "build": "next build",
     "check": "biome check .",
     "check:unsafe": "biome check --write --unsafe .",
