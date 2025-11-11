@@ -9,7 +9,11 @@ export async function Header() {
     <header className="relative bg-gradient-to-br from-emerald-500 via-sky-500 to-blue-600 border-b-4 border-green-300 shadow-2xl">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between relative z-10">
         <h2 className="text-xl font-semibold text-white drop-shadow-lg transform hover:scale-110 transition-transform">
-          ✨App Chat
+          <Image src="/logo.png"
+          alt="Logo projects"
+          width={70}
+          height={70}
+          />
         </h2>
         <div className="status-user">
           {session ? (
