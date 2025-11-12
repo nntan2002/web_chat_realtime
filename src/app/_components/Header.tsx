@@ -1,6 +1,6 @@
-import Link from "next/link";
 import Image from "next/image";
 import { auth } from "~/server/auth";
+import { SignInButton, ButtonDropdown } from "../components/ui/Button";
 
 export async function Header() {
   const session = await auth();
@@ -10,9 +10,9 @@ export async function Header() {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between relative z-10">
         <h2 className="text-xl font-semibold text-white drop-shadow-lg transform hover:scale-110 transition-transform">
           <Image src="/logo.png"
-          alt="Logo projects"
-          width={70}
-          height={70}
+            alt="Logo projects"
+            width={70}
+            height={70}
           />
         </h2>
         <div className="status-user">
@@ -60,29 +60,28 @@ export async function Header() {
                         {session.user.email}
                       </p>
                     </div>
-                    <button
-												className="w-full text-left px-4 py-2 text-sm text-white hover:bg-white/20 transition transform hover:translate-x-1"
-											>
-												Account Settings
-										</button>
-                    <Link
-                      href={session ? "/api/auth/signout" : "/api/auth/signin"}
-                      className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-white/20 transition transform hover:translate-x-1"
-                    >
-                      Sign Out
-                    </Link>
+                    <ButtonDropdown
+                      label="Profile"
+                      type="custom"
+                      callbackUrl="/profile" 
+                    />
+                    <ButtonDropdown
+                      label="Setting"
+                      type="custom"
+                      callbackUrl="/setting" 
+                    />
+                    <ButtonDropdown
+                      label="Sign Out"
+                      type="signOut"
+                      callbackUrl="/" 
+                    />
                   </div>
                 </div>
               </div>
             </>
           ) : (
             <>
-              <Link
-                href={session ? "/api/auth/signout" : "/api/auth/signin"}
-                className="flex items-center gap-3 rounded-full bg-white/20 backdrop-blur-sm text-white border-2 border-white/40 hover:bg-white/30 hover:border-white/60 px-3 py-2 transition-all cursor-pointer transform hover:scale-105"
-              >
-                Sign In
-              </Link>
+              <SignInButton />
             </>
           )}
         </div>
