@@ -2,12 +2,13 @@
 
 import { signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { ScanFace } from 'lucide-react';
 
 interface ButtonDropdownProps {
-  label: string; // Tên hiển thị của nút
-  onClickAction?: () => void; // Một hàm tùy chỉnh cho sự kiện click
-  type?: "signIn" | "signOut" | "custom"; // Để xác định hành động mặc định
-  callbackUrl?: string; // URL để chuyển hướng sau signIn/signOut
+  label: string;
+  onClickAction?: () => void;
+  type?: "signIn" | "signOut" | "custom";
+  callbackUrl?: string;
 }
 
 export function SignInButton() {
@@ -17,6 +18,7 @@ export function SignInButton() {
       className="flex items-center gap-3 rounded-full bg-white/20 backdrop-blur-sm text-white border-2 border-white/40 hover:bg-white/30 hover:border-white/60 px-3 py-2 transition-all cursor-pointer transform hover:scale-105"
     >
       Sign In with Discord
+      <ScanFace />
     </button>
   );
 }

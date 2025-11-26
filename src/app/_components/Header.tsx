@@ -63,17 +63,17 @@ export async function Header() {
                     <ButtonDropdown
                       label="Profile"
                       type="custom"
-                      callbackUrl="/profile" 
+                      callbackUrl="/profile"
                     />
                     <ButtonDropdown
                       label="Setting"
                       type="custom"
-                      callbackUrl="/setting" 
+                      callbackUrl="/setting"
                     />
                     <ButtonDropdown
                       label="Sign Out"
                       type="signOut"
-                      callbackUrl="/" 
+                      callbackUrl="/"
                     />
                   </div>
                 </div>
