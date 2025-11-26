@@ -1,5 +1,6 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import React, { useState, useRef, useEffect } from 'react';
 
 // --- Types ---
@@ -95,7 +96,9 @@ const Avatar = ({ name, color, size = 'md', status }: { name: string, color: str
     );
 };
 
-export function  Main() {
+export function Main() {
+    const { data: session, status } = useSession();
+
     const [activeContactId, setActiveContactId] = useState<string>(MOCK_CONTACTS[0]?.id ?? '');
     const [messagesMap, setMessagesMap] = useState<Record<string, Message[]>>(INITIAL_MESSAGES);
     const [inputValue, setInputValue] = useState('');
@@ -171,14 +174,23 @@ export function  Main() {
     const handleKeyDown = (e: React.KeyboardEvent) => {
         if (e.nativeEvent.isComposing) return;
         if (e.key === 'Enter' && !e.shiftKey) {
-          e.preventDefault();
-          handleSendMessage();
+            e.preventDefault();
+            handleSendMessage();
         }
     };
 
     const filteredContacts = MOCK_CONTACTS.filter(c =>
         c.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    if (!session) {
+        return (
+            <div className="container mx-auto">
+                Bạn chưa đăng nhập. Vui lòng đăng nhập để sử dụng tính năng này.
+                {/* Bạn có thể thêm nút đăng nhập ở đây */}
+            </div>
+        );
+    }
 
     return (
         <div className="flex h-[calc(100dvh-125.39px)] w-full bg-white font-sans overflow-hidden">

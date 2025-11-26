@@ -7,7 +7,7 @@ export async function Header() {
 
   return (
     <header className="relative bg-gradient-to-br from-emerald-500 via-sky-500 to-blue-600 border-b-4 border-green-300 shadow-2xl">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between relative z-10">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between relative z-50">
         <h2 className="text-xl font-semibold text-white drop-shadow-lg transform hover:scale-110 transition-transform">
           <Image src="/logo.png"
             alt="Logo projects"
