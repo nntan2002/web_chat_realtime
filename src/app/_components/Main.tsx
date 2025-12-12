@@ -187,7 +187,6 @@ export function Main() {
         return (
             <div className="container mx-auto">
                 Bạn chưa đăng nhập. Vui lòng đăng nhập để sử dụng tính năng này.
-                {/* Bạn có thể thêm nút đăng nhập ở đây */}
             </div>
         );
     }
